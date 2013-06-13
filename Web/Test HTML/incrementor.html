@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript">
+    	console.log("main script ran");
+    	$(document).ready(function() {
+        console.log($('.incInp').val());
+    		$('.incButton').each(function() {
+    			btn = $(this);
+    			$(this).click(function(){
+    				var span = $(".incInp." + btn.attr('incName'));
+    				//var number = parseInt(span.text()) + parseInt(btn.attr('incAmount'));
+            var number = parseInt(span.val()) + parseInt(btn.attr('incAmount'));
+    				span.val(number);
+    			});
+    		});
+
+        $('.decButton').each(function() {
+          btn = $(this);
+          $(this).click(function(){
+            var span = $(".incInp." + btn.attr('incName'));
+            //var number = parseInt(span.text()) + parseInt(btn.attr('incAmount'));
+            var number = parseInt(span.val()) - parseInt(btn.attr('incAmount'));
+            span.val(number);
+          });
+        });
+    	});
+    </script>
+  </head>
+  <body>
+    <h1>TEMPLATE TEST</h1>
+  
+  	<input type="text" disabled='true' class="incInp name" value="10">
+  	<button type="button" class="incButton" incName="name" incAmount="5">increment</button>
+    <button type="button" class="decButton" incName="name" incAmount="5">decrement</button>
+  </body>
+</html>

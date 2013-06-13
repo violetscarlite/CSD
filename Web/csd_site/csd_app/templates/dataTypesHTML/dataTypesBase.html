@@ -1,0 +1,23 @@
+<div id="{{key}}HTML">
+    <div class="singleSetupDiv span3" style="display:none;">
+    	<div class="bar clearfix">
+    		{{value.longName}}: <span class="title">DataSetup</span>
+    		<a href="#" class="closeButton"><i class="icon-remove"></i></a><a class="toggleDisplay" href="#"><i class="icon-minus"></i><i class="icon-plus" style="display:none;"></i></a>
+    	</div>
+    	<div class="dataDiv">
+    		<fieldset name="numOfData">
+                <label>Name:</label>
+                <input name="numOfData-longName" class="longName" type="text" value="Name of the thing">
+                <label>ShortName:</label>
+                <input name="numOfData-shortName" class="shortName" type="text" value="Name of the thing">
+                <!--<label>Description:</label>
+                <textarea name="numOfData-desc" class="desc"> </textarea>-->
+                <input name="numOfData-group" class="group" type="hidden" value="blah">
+                <input name="numOfData-type" class="type" type="hidden" value="blah">
+                <input class="numberOfDate" var="numOfData" type="hidden"/> 
+                {% block formOptions %}
+                {% endblock %}
+            </fieldset>
+    	</div>
+    </div>
+</div>

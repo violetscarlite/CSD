@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript">
+    	console.log("main script ran");
+    	$(document).ready(function() {
+    		console.log("WORKING");
+    		$('.incButton').each(function() {
+    			btn = $(this);
+    			$(this).click(function(){
+    				var span = $(".incSpan." + btn.attr('incName'));
+    				var number = parseInt(span.text()) + parseInt(btn.attr('incAmount'));
+    				span.text(number);
+    			});
+    		});
+    	});
+    </script>
+  </head>
+  <body>
+    <h1>TEMPLATE TEST</h1>
+  
+  	<span class="incSpan name">10</span>
+  	<button type="button" class="incButton" incName="name" incAmount="5">test</button>
+  </body>
+</html>

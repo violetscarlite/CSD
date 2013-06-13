@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block css %}
+  <link href="/static/css/createSetup.css" rel="stylesheet">
+{% endblock %}
+{% block js %}
+    <script src="/static/js/jquery.masonry.min.js" type="text/javascript"></script>
+	<script src="/static/js/createSetup.js" type="text/javascript"></script>
+{% endblock %}
+
+
+{% block sidebar %}
+	<div class="well sidebar">
+        <label>Competition:</label>
+        <select id="competitions">
+            {% for competition in competitions %}
+                <option value="{{competition.id}}"> {{competition.gameName}}</option>
+            {% endfor %}
+        </select>
+        <button class="btn" type="button" id="submitSetupBtn">Create the Setup</button>
+        <h5>Create A New Set of Data to Gather</h5>
+        <form id="addDataForm">
+            <label>Long Name:</label>
+            <input class="dataLong" type="text"/>
+            <label>Short Name:</label>
+            <input class="dataShort" type="text"/>
+            <label>Type:</label>
+            <select class="dataType">
+            	{% for k, v in dataTypes.iteritems %}
+                	<option value="{{k}}"> {{v.longName}}</option>
+                {% endfor %}
+            </select>
+            <button class="btn" type="submit" incName="name" incAmount="5">Add New Data</button>
+        </form>
+
+        <h5>Create a New Group to Orgnaize Your Data</h5>
+        <form onSubmit="return addGroup()">
+            <label>Long Name:</label>
+            <input type="text" class="groupLong" />
+            <button class="btn" type="submit" incName="name" incAmount="5">Add A New Group</button>
+        </form>
+    </div><!--/.well -->
+{% endblock %}
+
+
+
+{% block content %}
+	<div class="row">
+	    <form id="setupForm" method="POST" action="/setup/create">
+            {% csrf_token %}
+	        <div class="span4">
+                <h5>Groups</h5>
+                <div id="groups">
+                </div>
+	        </div>
+	        <div class="span4">
+                <h5>Ungrouped Data</h5>
+                <div id="default" class="sortable">
+                </div>
+	        </div>
+	    </form>
+	</div>
+
+	<div id="htmlOutlines" style="display:none;">
+        {% for key, value in dataTypes.iteritems%}
+            {% include  value.htmlFile %}
+        {% endfor %}
+        <div id="groupHTML">
+            <div class="row">
+                <div class="singleGroup sortable span4" style="display:none;">
+                    <div class="titlebar">
+                        <input type="text" class="groupName" value="Default Name" disabled/>
+                        <a href="#" class="closeButton"><i class="icon-remove"></i></a>
+                        <a class="toggleDisplay" href="#"><i class="icon-minus"></i><i class="icon-plus" style="display:none;"></i></a>
+                        <a href="#" class="editButton"><i class="icon-pencil"></i></a>
+                    </div>
+                    <div class="groupData">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

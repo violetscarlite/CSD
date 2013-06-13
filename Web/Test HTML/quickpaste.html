@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="static/css/base.css" rel="stylesheet">
+    
+  <link href="static/css/createSetup.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <script src="static/js/jquery-1.9.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js" type="text/javascript"></script>
+
+    
+	<script src="static/js/createSetup.js" type="text/javascript"></script>
+
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="bootstrap/ico/favicon.png">-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">CSD</a>
+          <div >
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Setup</a></li>
+              <li><a href="#">Collect</a></li>
+              <li><a href="#">Analyze</a></li>
+            </ul>
+            <form class="navbar-form pull-right">
+              <input class="span2" type="text" placeholder="Email">
+              <input class="span2" type="password" placeholder="Password">
+              <button type="submit" class="btn">Sign in</button>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+    
+
+      <!-- sidebar goes here -->
+      <div class="row">
+            <div class="span3">
+                
+	<div class="well sidebar">
+        <h5>Create A New Set of Data to Gather</h5>
+        <form id="addDataForm">
+            <label>Long Name:</label>
+            <input class="dataLong" />
+            <label>Short Name:</label>
+            <input class="dataShort" />
+            <label>Type:</label>
+            <select class="dataType">
+            	
+                	<option value="int"> Integer</option>
+                
+                	<option value="checkbox"> Checkboxes</option>
+                
+                	<option value="radio"> Radio Buttons</option>
+                
+                	<option value="num"> Number</option>
+                
+                	<option value="inc"> Incrementor</option>
+                
+            </select>
+            <button type="submit" incName="name" incAmount="5">Add New Data</button>
+        </form>
+
+        <h5>Create a New Group to Orgnaize Your Data</h5>
+        <form onSubmit="return addGroup()">
+            <label>Long Name:</label>
+            <input class="groupLong" />
+            <button type="submit" incName="name" incAmount="5">Add A New Group</button>
+        </form>
+    </div><!--/.well -->
+
+            </div>
+            <div class="span9">
+                
+	<div>
+	    <form>
+	        <div id="groups">
+	        </div>
+	        <div id="default" class="row">
+	        </div>
+	    </form>
+	</div>
+
+	<div id="htmlOutlines" style="display:none;">
+        
+            <div id="intHTML">
+    <div class="singleSetupDiv span4" style="display:none;">
+    	<div class="bar clearfix">
+    		<span class="title">DataSetup</span>
+    		<a href="#" class="closeButton"><i class="icon-remove"></i></a><a class="toggleDisplay" href="#"><i class="icon-minus"></i><i class="icon-plus" style="display:none;"></i></a>
+    	</div>
+    	<div class="">
+    		<fieldset name="numOfData">
+                <label>Name:</label>
+                <input name="numOfData-longName" class="longName" type="text" value="Name of the thing">
+                <label>ShortName:</label>
+                <input name="numOfData-shortName" class="shortName" type="text" value="Name of the thing">
+                <input name="numOfData-group" class="group" type="hidden" value="blah">
+                <input name="numOfData-type" class="type" type="hidden" value="blah">
+                
+
+
+            </fieldset>
+    	</div>
+    </div>
+</div>
+        
+            <div id="checkboxHTML">
+    <div class="singleSetupDiv span4" style="display:none;">
+    	<div class="bar clearfix">
+    		<span class="title">DataSetup</span>
+    		<a href="#" class="closeButton"><i class="icon-remove"></i></a><a class="toggleDisplay" href="#"><i class="icon-minus"></i><i class="icon-plus" style="display:none;"></i></a>
+    	</div>
+    	<div class="">
+    		<fieldset name="numOfData">
+                <label>Name:</label>
+                <input name="numOfData-longName" class="longName" type="text" value="Name of the thing">
+                <label>ShortName:</label>
+                <input name="numOfData-shortName" class="shortName" type="text" value="Name of the thing">
+                <input name="numOfData-group" class="group" type="hidden" value="blah">
+                <input name="numOfData-type" class="type" type="hidden" value="blah">
+                
+
+
+            </fieldset>
+    	</div>
+    </div>
+</div>
+        
+            <div id="radioHTML">
+    <div class="singleSetupDiv span4" style="display:none;">
+    	<div class="bar clearfix">
+    		<span class="title">DataSetup</span>
+    		<a href="#" class="closeButton"><i class="icon-remove"></i></a><a class="toggleDisplay" href="#"><i class="icon-minus"></i><i class="icon-plus" style="display:none;"></i></a>
+    	</div>
+    	<div class="">
+    		<fieldset name="numOfData">
+                <label>Name:</label>
+                <input name="numOfData-longName" class="longName" type="text" value="Name of the thing">
+                <label>ShortName:</label>
+                <input name="numOfData-shortName" class="shortName" type="text" value="Name of the thing">
+                <input name="numOfData-group" class="group" type="hidden" value="blah">
+                <input name="numOfData-type" class="type" type="hidden" value="blah">
+                
+
+
+            </fieldset>
+    	</div>
+    </div>
+</div>
+        
+            <div id="numHTML">
+    <div class="singleSetupDiv span4" style="display:none;">
+    	<div class="bar clearfix">
+    		<span class="title">DataSetup</span>
+    		<a href="#" class="closeButton"><i class="icon-remove"></i></a><a class="toggleDisplay" href="#"><i class="icon-minus"></i><i class="icon-plus" style="display:none;"></i></a>
+    	</div>
+    	<div class="">
+    		<fieldset name="numOfData">
+                <label>Name:</label>
+                <input name="numOfData-longName" class="longName" type="text" value="Name of the thing">
+                <label>ShortName:</label>
+                <input name="numOfData-shortName" class="shortName" type="text" value="Name of the thing">
+                <input name="numOfData-group" class="group" type="hidden" value="blah">
+                <input name="numOfData-type" class="type" type="hidden" value="blah">
+                
+
+
+            </fieldset>
+    	</div>
+    </div>
+</div>
+        
+            <div id="incHTML">
+    <div class="singleSetupDiv span4" style="display:none;">
+    	<div class="bar clearfix">
+    		<span class="title">DataSetup</span>
+    		<a href="#" class="closeButton"><i class="icon-remove"></i></a><a class="toggleDisplay" href="#"><i class="icon-minus"></i><i class="icon-plus" style="display:none;"></i></a>
+    	</div>
+    	<div class="">
+    		<fieldset name="numOfData">
+                <label>Name:</label>
+                <input name="numOfData-longName" class="longName" type="text" value="Name of the thing">
+                <label>ShortName:</label>
+                <input name="numOfData-shortName" class="shortName" type="text" value="Name of the thing">
+                <input name="numOfData-group" class="group" type="hidden" value="blah">
+                <input name="numOfData-type" class="type" type="hidden" value="blah">
+                
+
+
+            </fieldset>
+    	</div>
+    </div>
+</div>
+        
+        <div id="groupHTML">
+            <div class="row">
+                <div class="singleGroup span9" style="display:none;">
+                    <div class="titlebar">
+                        <input type="text" class="groupName" value="Default Name" disabled/>
+                        <a href="#" class="closeButton"><i class="icon-remove"></i></a>
+                        <a class="toggleDisplay" href="#"><i class="icon-minus"></i><i class="icon-plus" style="display:none;"></i></a>
+                        <a href="#" class="editButton"><i class="icon-pencil"></i></a>
+                    </div>
+                    <div class="groupData">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+
+       </div>
+    
+
+    </div> <!-- /container -->
+
+    <footer>
+        <hr>
+        <p>The Footer</p>
+    </footer>
+  </body>
+</html>

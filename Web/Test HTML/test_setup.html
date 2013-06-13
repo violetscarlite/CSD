@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript">
+        var numberOfButtons = 0;
+    	console.log("main script ran");
+        $(document).ready(function(){
+            $('.addButton').each(function(){
+                $(this).click(function(){
+                    numberOfButtons += 1;
+                    $('#setup').append( '<div class="dataDiv" style="display:none;"><div class="bar" style="background:blue;"><button type="button" class="toggleDisplay" incName="name" incAmount="5">Hide/Show</button></div><div class="on" style="background:red; height:100px;">Testing ' + numberOfButtons + '  <button type="button" class="removeButton" incName="name" incAmount="5">Remove</button></div></div>' );
+                    var div = $('#setup .dataDiv:last');
+                    div.slideDown(400);
+                    div.find('.removeButton').click(function(){
+                        $(this).closest('.dataDiv').slideUp(400, function(){
+                            $(this).remove();
+                        });
+                    });
+                    div.find('.toggleDisplay').click(function(){
+                        $(this).closest('.dataDiv').find('.on').slideToggle(400);
+                    });     
+                });    
+            });       
+        });
+
+    </script>
+  </head>
+  <body>
+    <h1>TEMPLATE TEST</h1>
+  
+    <div id="setup">
+    </div>
+  	<button type="button" class="addButton" incName="name" incAmount="5">Add new Data</button>
+  </body>
+</html>

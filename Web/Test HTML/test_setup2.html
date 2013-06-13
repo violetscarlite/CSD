@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="test_setup2.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <script src="jquery-1.9.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="bootstrap/ico/favicon.png">
+
+     <script type="text/javascript">
+        var numberOfButtons = 0;
+      console.log("main script ran");
+        $(document).ready(function(){
+            $('.addData').each(function(){
+                $(this).click(function(){
+                    numberOfButtons += 1;
+                    $('#setup').append( '<div class="singleSetupDiv" \style="display:none;">\
+    <div class="bar clearfix">\
+        <span class="title">DataSetup</span>\
+        <a href="#" class="closeButton"><i class="icon-remove"></i></a><a class="toggleDisplay" href="#"><i class="icon-minus"></i><i class="icon-plus" style="display:none;"></i></a>\
+    </div>\
+    <div class="dataDiv">\
+        <form>\
+            <fieldset>\
+                <label>Name:</label>\
+                <input class="nameInput" type="text" value="Name of the thing"\>\
+            </fieldset>\
+            Testing ' + numberOfButtons + '  \
+        </form>\
+    </div>\
+</div> ' );
+                    var div = $('#setup .singleSetupDiv:last');
+                    div.slideDown(400);
+                    div.find('.closeButton').click(function(){
+                        $(this).closest('.singleSetupDiv').slideUp(400, function(){
+                            $(this).remove();
+                        });
+                        return;
+                    });
+                    div.find('.toggleDisplay').click(function(){
+                        $(this).closest('.singleSetupDiv').find('.dataDiv').slideToggle(400);
+                        $(this).find(".icon-plus").toggle();
+                        $(this).find(".icon-minus").toggle();
+                        return false;
+                    });
+                    div.find('.title').html(div.find('.nameInput').val());
+                    div.find('.nameInput').keyup(function() {
+                        $(this).closest('.singleSetupDiv').find('.title').html($(this).val());
+                    });        
+                });    
+            });
+
+            $('.addGroup').click(function() {
+                $('#groups').append('<div class="singleGroup" style="display:none;">\
+    <input type="text" class="groupName" value="Default Name" disabled/> \
+    <a href="#" class="closeButton"><i class="icon-remove"></i></a>\
+    <a href="#" class="editButton"><i class="icon-pencil"></i></a>\
+</div>' );
+                var div = $('#groups .singleGroup:last')
+                div.slideDown(400);
+                div.find('.closeButton').click(function() {
+                    $(this).closest(".singleGroup").slideUp(400,function(){
+                        $(this).remove();
+                    });
+                });
+                div.find('.editButton').click(function() {
+                    var input = $(this).closest(".singleGroup").find(".groupName")
+                    input.prop("disabled",false);
+                    input.focus();
+                    
+                    return false;
+                });
+                var input = div.find(".groupName");
+                input.keypress(function(event) {
+                    if(event.which == 13){
+                        $(this).blur();
+                    }
+                });
+                input.blur(function() {
+                    console.log("lost focus");
+                    $(this).prop("disabled",true);
+                });
+    
+            });       
+        });
+
+    </script>
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="bootstrap/ico/favicon.png">-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">CSD</a>
+          <div >
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Setup</a></li>
+              <li><a href="#">Collect</a></li>
+              <li><a href="#">Analyze</a></li>
+            </ul>
+            <form class="navbar-form pull-right">
+              <input class="span2" type="text" placeholder="Email">
+              <input class="span2" type="password" placeholder="Password">
+              <button type="submit" class="btn">Sign in</button>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="setup">
+        <div id="groups">
+            
+        </div>
+        <button type="button" class="addGroup" incName="name" incAmount="5">Add A New Group</button>
+      </div>
+      <button type="button" class="addData" incName="name" incAmount="5">Add New Data</button>
+    </div> <!-- /container -->
+
+    <footer>
+        <hr>
+        <p>The Footer</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+.singleSetupDiv {
+	border: #d0d0d0 solid 1px;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	margin-bottom:10px;
+}
+
+.singleSetupDiv .bar, .singleGroup {
+	padding:2px;
+	padding-right:6px;
+	padding-left:6px;
+	background-color: #e5e5e5;
+
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.singleGroup{
+	border:: #d0d0d0;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius: 5px;
+}
+
+.closeButton, .toggleDisplay, .editButton{
+	float:right;
+}
+
+.dataDiv {
+	padding: 5px;
+
+	border-top: #d0d0d0 solid 1px;
+}
